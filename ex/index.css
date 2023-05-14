@@ -1,0 +1,22 @@
+.body {
+ orient: portrait;
+}
+.tdTitle { width:50px; }
+.tdButton { width:70px; align:right; }
+.tb {
+ width:100%;
+ virtical-align:middle;
+ border-collapse:collapse;
+ font-family:Helvetica;
+ text-shadow:#000000 1px 1px 1px;
+ font-weight:bold;
+ font-size:20px; color:#FFFFFF;
+ background: url(./iui/toolbar.png);
+}
+.tbC { text-align: center; height: 42px; }
+.frm {
+ width:100%;padding:0px;spacing:0px;background:#FFFFFF;
+ font-family:Helvetica;font-weight:bold;font-size:12pt;
+}
+.klarigo {align:center;}
+.input {width:100%;border: 1px solid #999999;font-size:14pt;}
