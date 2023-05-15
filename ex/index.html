@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html manifest="./manifest.txt">
+<html manifest="./manifest.appcache">
 
 <head>
   <title>Esperanto Vortaro</title>
   <meta http-equiv="Content-Type" CONTENT="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width" />
+  <meta http-equiv="Cache-Control" content="max-age=3600">
   <script src="index.js"></script>
   <script src="ajax.js"></script>
+  <style src="index.css"></style>
 </head>
 
 <body style="margin:0; padding:0">
 
-  <table class=tb>
+  <table class=tb style="background-image: url('./toolbar.png'); width: 100%; height: 40px;">
     <tr>
-      <td class=tbC><b>Esperanto Vortaro 사전</b></td>
+      <td class=tbC align="center">
+        <font color="white"><b>Esperanto Vortaro 사전</b></font>
+      </td>
     </tr>
   </table>
 
@@ -27,7 +31,7 @@
       <td>
         <input type=email id=vorto class=input autocomplete=off>
       </td>
-      <td class=tdButton align=right><img id=Serchu src="./iui/Search.png" width=58 height=30></td>
+      <td class=tdButton align=right><img id=Serchu src="./Search.png" width=58 height=30></td>
     </tr>
   </table>
 

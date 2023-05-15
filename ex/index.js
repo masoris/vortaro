@@ -20,30 +20,6 @@ function cxapelo(v) {
 }
 
 var first = 1;
-function click_vorto(v) {
-  if (v == "") return;
-
-  try {
-    var r = localStorage[v];
-    if (r != null) {
-      E("rezulto").innerHTML = "CV:" + r;
-      return;
-    }
-  } catch (e) {
-    /* alert("a:"+e); */
-  }
-
-
-  E("rezulto").innerHTML = "<br>Searching...";
-
-  call_ajax_text_post("../ekma/tiru-enhavon-2.php", "vorto=" + encodeURI(v),
-    function (r) {
-      E("rezulto").innerHTML = r;
-      try { localStorage[v] = r; } catch (e) { /* alert("b:"+e); */ }
-    }
-  );
-  first = 1;
-}
 
 function klaku_vorto(v) {
   if (v == "") return;
@@ -249,10 +225,7 @@ var load_status = "INIT";
 window.onload = function () {
   E("vorto").onkeyup = function (e) {
     chapeligo();
-    var code = '0';
-    if (window.event) code = window.event.keyCode;
-    else if (e) code = e.which;
-    if (code == 13) {
+    if (e.key == "Enter") {
       klaku_vorto(E("vorto").value);
     }
   }
