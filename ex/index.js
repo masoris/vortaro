@@ -19,25 +19,23 @@ function cxapelo(v) {
   return v;
 }
 
+var DIC = null;
 var first = 1;
 
 function klaku_vorto(v) {
   if (v == "") return;
 
-  // 1
-  var dic_json = localStorage['DIC_JSON_31'];
-  if (dic_json != null) { dic = eval(dic_json); }
-  if (dic == null) {
+  if (DIC == null) {
     alert("Vi ankoraŭ ne elŝutis datumon.\r\n아직 사전 데이타를 내려 받지 않았습니다. 내려받기를 누르세요.");
     return;
   }
 
   E("rezulto").innerHTML = "<br>Searching...";
 
-  var result_lines = search(dic, v);
+  var result_lines = search(DIC, v);
   if (result_lines.length == 0) {
     v = v.toLowerCase();
-    result_lines = search(dic, v);
+    result_lines = search(DIC, v);
     if (result_lines.length == 0) {
       E("rezulto").innerHTML = "<br><br>Nenio troviĝas por tio.<br>단어를 찾을 수 없습니다.";
       return;
@@ -77,8 +75,6 @@ function chapeligo() {
     E("vorto").value = v2;
   }
 }
-
-var dic = null;
 
 function highlight(lines, vorto) {
   var new_lines = new Array();
@@ -243,17 +239,18 @@ window.onload = function () {
     first = 1;
   }
 
-  // 2
-  var dic_json = localStorage['DIC_JSON_31'];
-  if (dic_json != null) {
-    dic = eval(dic_json);
-    // E("load").style.visibility = "hidden";
+  if (localStorage['DIC_JSON_31'] != null) {
+    DIC = JSON.parse(localStorage.DIC_JSON_31);
+  }
+
+  if (DIC != null) {
     E("load").value = "Datumo preta. 사전검색 가능함.";
     load_status = "DONE";
   }
 
   E("Reset").onclick = function () {
-    localStorage.clear();
+    delete localStorage.DIC_JSON_31;
+    DIC = null;
     load_status = "INIT";
     E("load").value = "Elŝutu datumon. 사전 내려받기.";
     E("Reset").disabled = true;
@@ -265,23 +262,15 @@ window.onload = function () {
       return;
     }
 
-    // 3
-    var dic_json = localStorage['DIC_JSON_31'];
-    if (dic_json != null) {
-      dic = eval(dic_json);
-      E("load").value = "Datumo preta. 사전검색 가능함.";
-      load_status = "DONE";
-      return;
-    }
-
     // alert("내려받기에 시간이 걸릴 수 있으므로, OK/예 버튼을 누른 후, 잠시 기다려 주시기 바랍니다.\r\n내려 받는 동안 인터넷이 연결되어 있어야 합니다.");
-
+    DIC = null;
+    delete localStorage.DIC_JSON_31;
     E("load").value = "Elŝutanta ... 다운로드 진행중.";
     load_status = "PROGRESS";
     call_ajax_text_get("./dic.json", "time=" + new Date(),
-      function (r) {
-        localStorage.clear();
-        localStorage['DIC_JSON_31'] = r;
+      function (resp) {
+        localStorage['DIC_JSON_31'] = resp;
+        DIC = JSON.parse(resp);
 
         E("load").value = "Datumo preta. 사전검색 가능함.";
         load_status = "DONE";
