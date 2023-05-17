@@ -2,121 +2,123 @@
 <html manifest="./manifest.appcache">
 
 <head>
-  <title>Esperanto Vortaro</title>
-  <meta http-equiv="Content-Type" CONTENT="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <meta http-equiv="Cache-Control" content="max-age=3600">
-  <script src="index.js"></script>
-  <script src="ajax.js"></script>
-  <style src="index.css"></style>
+    <title>Esperanto Vortaro</title>
+    <meta http-equiv="Content-Type" CONTENT="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
+    <script src="index.js"></script>
+    <script src="./pako.min.js"></script>
+    <style src="index.css"></style>
 </head>
 
 <body style="margin:0; padding:0">
 
-  <table class=tb style="background-image: url('./toolbar.png'); width: 100%; height: 40px;">
-    <tr>
-      <td class=tbC align="center">
-        <font color="white"><b>Esperanto Vortaro 사전</b></font>
-      </td>
-    </tr>
-  </table>
-
-  <table class=frm>
-    <tr>
-      <td class=tdTitle>
-        <nobr>
-          <font style="font-size:14pt">Esp-Kor:</font>
-        </nobr>
-      </td>
-      <td>
-        <input type=email id=vorto class=input autocomplete=off>
-      </td>
-      <td class=tdButton align=right><img id=Serchu src="./Search.png" width=58 height=30></td>
-    </tr>
-  </table>
-
-  <span id="rezulto" class=klarigo style="font-size:14pt">
-    Bonvenon al Esperanto/Korea vortaro.<br>
-    <br>
-    Ĉi tiu vortaro funkcias sen interreto. Vi devas unue elŝuti datumon.<br>
-    이 사전은 인터넷 없이도 동작할 수 있도록 만들어진 사전입니다.
-    인터넷이 되는 곳에서 먼저 사전 데이타를
-    스마트폰으로 다운로드 해 두셔야 합니다.
-    <br>
-    <input type=button id="load" value="Elŝutu datumon. 사전 내려받기." style="font-size:14pt">
-    <br>
-    <br>
-    <br>
-    Ĉi vortaro surbazas de la papera vortaro de Hajpin Li.<br>
-    이 사전은 이해평(Hajpin Li)선생님의 에->한 사전을 기반으로 하고 있습니다.
-    <br>
-    <br>
-    Vi povas instali ĉi paĝon sur via saĝtelefono.<br>
-    스마트폰에서 현재 이 페이지를 바탕화면에 바로가기로 설치할 수 있습니다.
-    <br>
-
-    <br>
-    Version: DIC_JSON_31, Laste modifita: 2021.03.09
-    <br><br>
-    [G1] ... [G9] 레벨 구분은 Akademio에서 권고하는
-    Baza Radikaro Oficiala(BRO)를 근거해서 부여한 것입니다. [OA] Oficiala Aldono<br>
-    <br>
-    <table>
-      <tr>
-        <td>~G5 580 단어</td>
-        <td>~G6 990 단어</td>
-      </tr>
-      <tr>
-        <td>~G7 1200 단어</td>
-        <td>~G8 1700 단어</td>
-      </tr>
-      <tr>
-        <td>~G9 2500 단어</td>
-        <td>~OA 3900 단어</td>
-      </tr>
-      <tr>
-        <td>Tute 18000 단어</td>
-        <td></td>
-      </tr>
+    <table class=tb>
+        <tr>
+            <td class=tbC align="center">
+                <h2>Esperanto Vortaro 사전</h2>
+            </td>
+        </tr>
     </table>
-    <br>
-    <br>
-    <br>
-    내려받은 사전을, 지우고 다시 받으실 수 있습니다.<br>
-    <input type=button id="Reset" style="font-size:14pt" value="Forĵetu datumon. 사전 지우기.">
 
-  </span>
+    <table class=frm>
+        <tr>
+            <td class=tdTitle>
+                <nobr>
+                    <font style="font-size:14pt">Esp-Kor:</font>
+                </nobr>
+            </td>
+            <td>
+                <input type=email id=vorto class=input autocomplete=off>
+            </td>
+            <td class=tdButton align=right>
+                <input id="Serchu" type="button" value="Search" style="width:58px;height:30px">
+            </td>
+        </tr>
+    </table>
+
+    <span id="rezulto" class=klarigo style="font-size:14pt">
+        Bonvenon al Esperanto/Korea vortaro.<br>
+        <br>
+        Ĉi tiu vortaro funkcias sen interreto. Vi devas unue elŝuti datumon.<br>
+        이 사전은 인터넷 없이도 동작할 수 있도록 만들어진 사전입니다.
+        인터넷이 되는 곳에서 먼저 사전 데이타를
+        스마트폰으로 다운로드 해 두셔야 합니다.
+        <br>
+        <input type=button id="load" value="Elŝutu datumon. 사전 내려받기." style="font-size:14pt">
+        <br>
+        <br>
+        <br>
+        Ĉi vortaro surbazas de la papera vortaro de Hajpin Li.<br>
+        이 사전은 이해평(Hajpin Li)선생님의 에->한 사전을 기반으로 하고 있습니다.
+        <br>
+        <br>
+        Vi povas instali ĉi paĝon sur via saĝtelefono.<br>
+        스마트폰에서 현재 이 페이지를 바탕화면에 바로가기로 설치할 수 있습니다.
+        <br>
+
+        <br>
+        Version: DIC_JSON_31, Laste modifita: 2021.03.09
+        <br><br>
+        [G1] ... [G9] 레벨 구분은 Akademio에서 권고하는
+        Baza Radikaro Oficiala(BRO)를 근거해서 부여한 것입니다. [OA] Oficiala Aldono<br>
+        <br>
+        <table>
+            <tr>
+                <td>~G5 580 단어</td>
+                <td>~G6 990 단어</td>
+            </tr>
+            <tr>
+                <td>~G7 1200 단어</td>
+                <td>~G8 1700 단어</td>
+            </tr>
+            <tr>
+                <td>~G9 2500 단어</td>
+                <td>~OA 3900 단어</td>
+            </tr>
+            <tr>
+                <td>Tute 18000 단어</td>
+                <td></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+        내려받은 사전을, 지우고 다시 받으실 수 있습니다.<br>
+        <input type=button id="Reset" style="font-size:14pt" value="Forĵetu datumon. 사전 지우기.">
+
+    </span>
 
 
-  <BR>
-  <BR>
-  <H3>Aliaj vortaroj: 다른 사전</H3>
-  <UL>
-    <LI><a href=../e />마영태 선생님(Leono Ma)의 사전</a>
-    <LI><a href=../m />이재현 선생님(Hajpin Li)의 사전</a>
-    <LI><a href=../ex />다운로드후 인터넷 없이 쓰는 사전</a>
-    <LI><a href=../c />Vortaro por Ĉinoj</a>
-    <LI><a href=../j />Vortaro por Japanoj</a>
-    <LI><a href=../th />Vortaro por Taja Lingvo</a>
-    <LI><a href=http://www.reta-vortaro.de/revo />Reta Vortaro</a>
-      <br>
-    <LI><a href=../ek />이재현 선생님(Hajpin Li)의 PC판</a>
-    <LI><a href=../ekma />마영태 선생님(Leono Ma)의 PC판</a>
+    <BR>
+    <BR>
+    <H3>Aliaj vortaroj: 다른 사전</H3>
+    <UL>
+        <LI><a href=../e />마영태 선생님(Leono Ma)의 사전</a>
+        <LI><a href=../m />이재현 선생님(Hajpin Li)의 사전</a>
+        <LI><a href=../ex />다운로드후 인터넷 없이 쓰는 사전</a>
+        <LI><a href=../c />Vortaro por Ĉinoj</a>
+        <LI><a href=../j />Vortaro por Japanoj</a>
+        <LI><a href=../th />Vortaro por Taja Lingvo</a>
+        <LI><a href=http://www.reta-vortaro.de/revo />Reta Vortaro</a>
+            <br>
+        <LI><a href=../ek />이재현 선생님(Hajpin Li)의 PC판</a>
+        <LI><a href=../ekma />마영태 선생님(Leono Ma)의 PC판</a>
 
-    <LI><a href=../b />시각장애인을 위한 사전</a>
-
-
-    <LI><A HREF=http://14.63.213.244:9010/radikoj>에스페란토 어근찾기</A>
-    <LI><A HREF=http://14.63.213.244:9010/morphs>에스페란토 형태소분석</A>
-    <LI><A HREF=http://14.63.213.244:9010/conv2txt>문서/텍스트변환</A>
+        <LI><a href=../b />시각장애인을 위한 사전</a>
 
 
-  </UL>
+        <LI><A HREF=http://14.63.213.244:9010/radikoj>에스페란토 어근찾기</A>
+        <LI><A HREF=http://14.63.213.244:9010/morphs>에스페란토 형태소분석</A>
+        <LI><A HREF=http://14.63.213.244:9010/conv2txt>문서/텍스트변환</A>
 
-  <p>
-    저작권: 이 사전의 저작권은 한국에스페란토협회에 있으며
-    CCL(BY,SA)을 따릅니다.<br>
-  </p>
+
+    </UL>
+
+    <p>
+        저작권: 이 사전의 저작권은 한국에스페란토협회에 있으며
+        CCL(BY,SA)을 따릅니다.<br>
+    </p>
 
 </body>
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html manifest="./manifest.appcache">
+
+<head>
+    <title>Esperanto Vortaro (CH)</title>
+    <meta http-equiv="Content-Type" CONTENT="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
+    <script src="index.js"></script>
+    <script src="./pako.min.js"></script>
+    <style src="index.css"></style>
+</head>
+
+<body style="margin:0; padding:0">
+
+    <table class=tb>
+        <tr>
+            <td class=tbC align="center">
+                <h2>Esperanto Vortaro (CH)</h2>
+            </td>
+        </tr>
+    </table>
+
+    <table class=frm>
+        <tr>
+            <td class=tdTitle>
+                <nobr>
+                    <font style="font-size:14pt">Esp-Kor:</font>
+                </nobr>
+            </td>
+            <td>
+                <input type=email id=vorto class=input autocomplete=off>
+            </td>
+            <td class=tdButton align=right>
+                <input id="Serchu" type="button" value="Search" style="width:58px;height:30px">
+            </td>
+        </tr>
+    </table>
+
+    <span id="rezulto" class=klarigo style="font-size:14pt">
+        Bonvenon al Esperanto-vortaro. (Ĉina)<br>
+        <br>
+        Ĉi tiu vortaro estas uzebla sen interreta konekto.
+        <br>
+        <input type=button id="load" value="Elŝutu datumon ĉe interreta konekto." style="font-size:14pt">
+        <br>
+
+        <br>
+        CX_JSON_2, Laste modifita: 2018.01.27
+        <br><br>
+        <input type=button id="Reset" style="font-size:14pt;" value="Forĵetu la datumon.">
+        <br>
+        <br>
+        Origina enhavo estas farita de Abengo.
+        <br>
+
+    </span>
+
+</body>
+
+</html>

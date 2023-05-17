@@ -1,0 +1,9 @@
+CACHE MANIFEST
+
+# version 2023-05-15.01
+
+CACHE:
+/ekma
+./index.html
+./index.css
+./index.js

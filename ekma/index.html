@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html manifest="./manifest.appcache">
+
+<head>
+    <title>에스페란토 사전 (마영태) ... 에스페란토사전</title>
+    <meta http-equiv="Content-Type" CONTENT="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
+    <script src="index.js"></script>
+    <script src="./pako.min.js"></script>
+    <style src="index.css"></style>
+</head>
+
+<body style="margin:0; padding:0">
+
+    <table class=tb>
+        <tr>
+            <td class=tbC align="center">
+                <h2>Esperanto Vortaro 사전</h2>
+            </td>
+        </tr>
+    </table>
+
+    <table class=frm>
+        <tr>
+            <td class=tdTitle>
+                <nobr>
+                    <font style="font-size:14pt">Esp-Kor:</font>
+                </nobr>
+            </td>
+            <td>
+                <input type=email id=vorto class=input autocomplete=off>
+            </td>
+            <td class=tdButton align=right>
+                <input id="Serchu" type="button" value="Search" style="width:58px;height:30px">
+            </td>
+        </tr>
+    </table>
+
+    <span id="rezulto" class=klarigo style="font-size:14pt">
+        삿갓문자는 'x' 또는 '^'를 이용해서 입력합니다.<br>
+        <br>
+        <input type=button id="load" value="Elŝutu datumon. 사전 내려받기." style="font-size:14pt">
+        <br>
+        마영태 저 (세계에스페란토학술원 회원; 단국대 · 한국외대 에스페란토 강사; 중국 남경대 에스페란토 초빙교수)<br>
+
+        <H3>저서:</H3>
+        <UL>
+            <LI> I. 마영태에스페란토총서(전7권 10책), 한국에스페란토협회 출간<br>
+            <LI> 1권: ①에스페란토의 기초 ; ②에스페란토의 회화<br>
+            <LI> 2권: ③에스페란토의 작문 ; ④에스페란토의 숙어 · 속담<br>
+            <LI> 3권: ⑤즐거운 에스페란토나라 ; ⑥영어-에스페란토-한국어 회화<br>
+            <LI> 4권: ⑦에스페란토의 편람<br>
+            <LI> 5권: ⑧성서로 배우는 에스페란토<br>
+            <LI> 6권: ⑨(에스페란토-한국어 대역) 영혼의 양식<br>
+            <LI> 7권: ⑩이상한 언어, 행복한 50년 (회고록)<br>
+            <LI> II. 사전 : 에스페란토-한국어 사전 / 한국어-에스페란토 사전<br>
+            <LI> III. (한국어-에스페란토대조) 신약전서<br>
+            <LI> VI. 네이버 카페: <A href=https://cafe.naver.com/leono>https://cafe.naver.com/leono</A> <br>
+        </UL>
+        내려받은 사전을, 지우고 다시 받으실 수 있습니다.<br>
+        <input type=button id="Reset" style="font-size:14pt" value="Forĵetu datumon. 사전 지우기.">
+
+        <br><br>
+        종이로 된 에스페란토 사전은 (사)한국에스페란토협회에서 구매할 수 있습니다.<br>
+
+        <UL>
+            <LI> 전화 : 02-717-6974<br>
+            <LI> 이메일 : kea@esperanto.or.kr<br>
+            <LI> 최종수정: 2020-3-1<br>
+        </UL>
+
+        <hr>
+
+        <br>
+        <br>
+        [G1] ... [G9]는 Akademio에서 발표한 레벨 구분입니다.<br>
+        "Baza Radikaro Oficiala(BRO)"의 레벨 구분<br>
+        <br>
+        <br>
+        <p>
+            이 사전의 저작권은 마영태 선생님에게 있습니다.<br>
+            사전의 저작물에 대한 활용을 하고 싶으신 분들은 마영태 선생님에게 전화 또는 메일로 문의를 하시기 바랍니다.
+        </p>
+        <br>
+    </span>
+
+
+    <BR>
+    <BR>
+    <H3>Aliaj vortaroj: 다른 사전</H3>
+    <UL>
+        <LI><a href=../e />마영태 선생님(Leono Ma)의 사전</a>
+        <LI><a href=../m />이재현 선생님(Hajpin Li)의 사전</a>
+        <LI><a href=../ex />다운로드후 인터넷 없이 쓰는 사전</a>
+        <LI><a href=../c />Vortaro por Ĉinoj</a>
+        <LI><a href=../j />Vortaro por Japanoj</a>
+        <LI><a href=../th />Vortaro por Taja Lingvo</a>
+        <LI><a href=http://www.reta-vortaro.de/revo />Reta Vortaro</a>
+            <br>
+        <LI><a href=../ek />이재현 선생님(Hajpin Li)의 PC판</a>
+        <LI><a href=../ekma />마영태 선생님(Leono Ma)의 PC판</a>
+
+        <LI><a href=../b />시각장애인을 위한 사전</a>
+
+
+        <LI><A HREF=http://14.63.213.244:9010/radikoj>에스페란토 어근찾기</A>
+        <LI><A HREF=http://14.63.213.244:9010/morphs>에스페란토 형태소분석</A>
+        <LI><A HREF=http://14.63.213.244:9010/conv2txt>문서/텍스트변환</A>
+
+
+    </UL>
+
+    <p>
+        저작권: 이 사전의 저작권은 한국에스페란토협회에 있으며
+        CCL(BY,SA)을 따릅니다.<br>
+    </p>
+
+</body>
+
+</html>
