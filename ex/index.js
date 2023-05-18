@@ -330,3 +330,16 @@ window.onload = function () {
         );
     }
 }
+
+// window.onbeforeunload = function (event) {
+//     if (navigator.onLine) {
+//         console.log("navigator.onLine");
+//         event.preventDefault();
+//         event.returnValue = ''; // 일부 브라우저에서는 경고 메시지를 표시하기 위해 이 값을 설정해야 할 수 있습니다.
+//     } else {
+//         console.log("navigator.offLine");
+//         event.preventDefault();
+//         event.returnValue = ''; // 일부 브라우저에서는 경고 메시지를 표시하기 위해 이 값을 설정해야 할 수 있습니다. 
+//     }
+//     return;
+// };
