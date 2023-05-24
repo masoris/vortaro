@@ -19,6 +19,8 @@ function uncompress(binaryData) {
     return originalStringRestored;
 }
 
+
+
 function call_ajax_text_get(url, parameters, callback) {
     var req = false;
     try {
@@ -76,7 +78,7 @@ function klaku_vorto(v) {
     if (v == "") return;
 
     if (DIC == null) {
-        alert("Vi ankoraŭ ne elŝutis datumon.\r\n아직 사전 데이타를 내려 받지 않았습니다. 내려받기를 누르세요.");
+        alert("Vi ankoraŭ ne elŝutis vortaron.\r\n아직 사전 데이타를 내려 받지 않았습니다. 내려받기를 누르세요.");
         return;
     }
 
@@ -294,7 +296,7 @@ window.onload = function () {
     }
 
     if (DIC != null) {
-        E("load").value = "Datumo preta. 사전검색 가능함.";
+        E("load").value = "Vortaro Preta. 사전검색 가능함.";
         load_status = "DONE";
     }
 
@@ -302,9 +304,9 @@ window.onload = function () {
         delete localStorage.DIC_JSON_32;
         DIC = null;
         load_status = "INIT";
-        E("load").value = "Elŝutu datumon. 사전 내려받기.";
+        E("load").value = "Elŝutu Vortaron. 사전 내려받기.";
         E("Reset").disabled = true;
-    }
+    };
 
     E("load").onclick = function () {
         if (load_status == "PROGRESS") {
@@ -320,26 +322,17 @@ window.onload = function () {
         call_ajax_text_get("./dic.tsv", "time=" + new Date(),
             function (resp) {
                 // localStorage.clear();
-                localStorage['DIC_JSON_32'] = compress(resp);
-                DIC = resp.split("\n");
+                compressed = compress(resp);
+                // alert(compressed.length);
+                // alert(resp.length);
+                localStorage['DIC_JSON_32'] = compressed;
 
-                E("load").value = "Datumo preta. 사전검색 가능함.";
+                DIC = resp.split('\n');
+                E("load").value = "Vortaro Preta. 사전검색 가능함.";
                 load_status = "DONE";
                 E("Reset").disabled = false;
+
             }
         );
-    }
-}
-
-// window.onbeforeunload = function (event) {
-//     if (navigator.onLine) {
-//         console.log("navigator.onLine");
-//         event.preventDefault();
-//         event.returnValue = ''; // 일부 브라우저에서는 경고 메시지를 표시하기 위해 이 값을 설정해야 할 수 있습니다.
-//     } else {
-//         console.log("navigator.offLine");
-//         event.preventDefault();
-//         event.returnValue = ''; // 일부 브라우저에서는 경고 메시지를 표시하기 위해 이 값을 설정해야 할 수 있습니다. 
-//     }
-//     return;
-// };
+    };
+};

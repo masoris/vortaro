@@ -1,5 +1,5 @@
 * {
-    font-family: 'Roboto', 'Noto Sans CJK KR', 'Malgun Gothic', sans-serif;
+    font-family: 'Arial', 'Noto Sans CJK KR', 'Malgun Gothic', sans-serif;
 }
 
 h2 {
@@ -11,14 +11,32 @@ h2 {
     height: 30px;
     font-size: 16px;
     font-weight: bold;
-    right: 0;
-    position: relative;
+    right: 10px;
+    position: absolute;
+    top: 36px;
 }
 
-.body {}
+#load {
+    font-size: 14pt;
+}
+
+#Reset {
+    font-size: 14pt;
+}
+
+.klarigo {
+    font-size: 14pt;
+}
+
+.body {
+    margin: 10px;
+}
 
 .tdTitle {
-    width: 50px;
+    width: 70px;
+    top: 40px;
+    position: absolute;
+    font-weight: bold;
 }
 
 .tdButton {
@@ -38,6 +56,7 @@ h2 {
 .tbC {
     text-align: center;
     height: 42px;
+    color: #03bf6b;
 }
 
 .frm {
@@ -49,12 +68,13 @@ h2 {
     font-size: 12pt;
 }
 
-.klarigo {}
-
 .input {
-    width: calc(100% - 10px);
+    width: calc(100% - 166px);
     border: 1px solid #999999;
     font-size: 14pt;
     border-color: #03bf6b;
     border-width: 3px;
+    position: absolute;
+    top: 37px;
+    left: 80px;
 }

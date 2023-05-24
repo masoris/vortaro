@@ -2,54 +2,29 @@
 <html manifest="./manifest.appcache">
 
 <head>
-    <title>Esperanto Vortaro 이재현 에스페란토 사전</title>
+    <title>이재현 에스페란토 사전 Esperanto Vortaro</title>
     <meta http-equiv="Content-Type" CONTENT="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Cache-Control" content="max-age=31536000">
-    <!-- <meta http-equiv="cache-control" content="max-age=3600, must-revalidate"> -->
-    <meta http-equiv="expires" content="Tue, 18 May 2035 00:00:00 GMT">
-    <script src="index.js"></script>
+    <script src="./index.js"></script>
     <script src="./pako.min.js"></script>
-    <style src="index.css"></style>
+    <link rel="stylesheet" href="./index.css">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> -->
 </head>
 
-<body style="margin:0; padding:0">
+<body>
 
-    <table class=tb>
-        <tr>
-            <td class=tbC align="center">
-                <h2>Esperanto Vortaro 사전</h2>
-            </td>
-        </tr>
-    </table>
+    <h2 class="tbC">Esperanto Vortaro 사전</h2>
+    <span class="tdTitle">Esp-Kor:</span>
+    <input id=vorto class="input" autocomplete=off>
+    <input class="tdButton" id="Serchu" type="button" value="Serĉu">
 
-    <table class=frm>
-        <tr>
-            <td class=tdTitle>
-                <nobr>
-                    <font style="font-size:14pt">Esp-Kor:</font>
-                </nobr>
-            </td>
-            <td>
-                <input type=email id=vorto class=input autocomplete=off>
-            </td>
-            <td class=tdButton align=right>
-                <input id="Serchu" type="button" value="Search" style="width:58px;height:30px">
-            </td>
-        </tr>
-    </table>
-
-    <span id="rezulto" class=klarigo style="font-size:14pt">
-        Bonvenon al Esperanto/Korea vortaro.<br>
+    <span id="rezulto" class="klarigo">
+        삿갓문자는 'x' 또는 '^'를 이용해서 입력합니다.<br>
         <br>
-        Ĉi tiu vortaro funkcias sen interreto. Vi devas unue elŝuti datumon.<br>
-        이 사전은 인터넷 없이도 동작할 수 있도록 만들어진 사전입니다.
-        인터넷이 되는 곳에서 먼저 사전 데이타를
-        스마트폰으로 다운로드 해 두셔야 합니다.
-        <br>
-        <input type=button id="load" value="Elŝutu datumon. 사전 내려받기." style="font-size:14pt">
-        <br>
-        <br>
+        <input type=button id="load" value="Elŝutu Vortaron. 사전 내려받기.">
         <br>
         Ĉi vortaro surbazas de la papera vortaro de Hajpin Li.<br>
         이 사전은 이해평(Hajpin Li)선생님의 에->한 사전을 기반으로 하고 있습니다.
@@ -87,41 +62,36 @@
         <br>
         <br>
         내려받은 사전을, 지우고 다시 받으실 수 있습니다.<br>
-        <input type=button id="Reset" style="font-size:14pt" value="Forĵetu datumon. 사전 지우기.">
+        <input type=button id="Reset" value="Forĵetu Vortaron. 사전 지우기.">
 
+        <UL>
+            <LI> 전화 : 02-717-6974<br>
+            <LI> 이메일 : kea@esperanto.or.kr<br>
+            <LI> 최종수정: 2023-5-24<br>
+        </UL>
+
+        <hr>
+
+        <br>
+        [G1] ... [G9]는 Akademio에서 발표한 레벨 구분입니다.<br>
+        "Baza Radikaro Oficiala(BRO)"의 레벨 구분<br>
+        <br>
     </span>
 
-
-    <BR>
-    <BR>
     <H3>Aliaj vortaroj: 다른 사전</H3>
     <UL>
-        <LI><a href=../e />마영태 선생님(Leono Ma)의 사전</a>
-        <LI><a href=../m />이재현 선생님(Hajpin Li)의 사전</a>
-        <LI><a href=../ex />다운로드후 인터넷 없이 쓰는 사전</a>
-        <LI><a href=../c />Vortaro por Ĉinoj</a>
-        <LI><a href=../j />Vortaro por Japanoj</a>
-        <LI><a href=../th />Vortaro por Taja Lingvo</a>
-        <LI><a href=http://www.reta-vortaro.de/revo />Reta Vortaro</a>
+        <LI><a href="/ekma/index.html">마영태 선생님(Leono Ma)의 사전</a>
+        <LI><a href="/ex/index.html">이재현 선생님(Hajpin Li)의 사전</a>
+        <LI><a href="/tw/index.html">Dictionary for Taiwanese</a>
+        <LI><a href="/th/index.html">Dictionary for Thai language</a>
+        <LI><a href="http://www.reta-vortaro.de/revo">Reta Vortaro</a>
             <br>
-        <LI><a href=../ek />이재현 선생님(Hajpin Li)의 PC판</a>
-        <LI><a href=../ekma />마영태 선생님(Leono Ma)의 PC판</a>
-
-        <LI><a href=../b />시각장애인을 위한 사전</a>
-
-
-        <LI><A HREF=http://14.63.213.244:9010/radikoj>에스페란토 어근찾기</A>
-        <LI><A HREF=http://14.63.213.244:9010/morphs>에스페란토 형태소분석</A>
-        <LI><A HREF=http://14.63.213.244:9010/conv2txt>문서/텍스트변환</A>
-
-
+        <LI><a href="/b/index.html">시각장애인을 위한 사전</a>
     </UL>
 
     <p>
-        저작권: 이 사전의 저작권은 한국에스페란토협회에 있으며
-        CCL(BY,SA)을 따릅니다.<br>
+        저작권: 이 사전의 저작권은 한국에스페란토협회에 있으며 CCL(BY,SA)을 따릅니다.<br>
     </p>
-
 </body>
 
 </html>

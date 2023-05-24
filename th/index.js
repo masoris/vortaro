@@ -1,17 +1,14 @@
 function E(e) { return document.getElementById(e); }
 
 function compress(original_string) {
-    // 문자열 압축
     const encoder = new TextEncoder();
     const data = encoder.encode(original_string);
     const compressedData = pako.deflate(data);
-    // 압축된 데이터를 바이너리 형태로 출력
     const binaryData = Array.from(compressedData, byte => String.fromCharCode(byte)).join('');
     return binaryData;
 }
 
 function uncompress(binaryData) {
-    // 바이너리 데이터를 압축 해제하여 원래 문자열로 복원
     const decodedData = binaryData.split('').map(char => char.charCodeAt(0));
     const inflatedData = pako.inflate(new Uint8Array(decodedData));
     const decoder = new TextDecoder();
@@ -76,7 +73,7 @@ function klaku_vorto(v) {
     if (v == "") return;
 
     if (DIC == null) {
-        alert("Vi ankoraŭ ne elŝutis datumon.");
+        alert("You did not download the dictionary content yet.\nPlease press download button.");
         return;
     }
 
@@ -87,7 +84,7 @@ function klaku_vorto(v) {
         v = v.toLowerCase();
         result_lines = search(DIC, v);
         if (result_lines.length == 0) {
-            E("rezulto").innerHTML = "<br><br>Nenio troviĝas por tio.";
+            E("rezulto").innerHTML = "<br><br>Nothing found for that.";
             return;
         }
     }
@@ -294,7 +291,7 @@ window.onload = function () {
     }
 
     if (DIC != null) {
-        E("load").value = "Datumo preta.";
+        E("load").value = "Dictionary is ready to use.";
         load_status = "DONE";
     }
 
@@ -302,20 +299,19 @@ window.onload = function () {
         delete localStorage.DIC_JSON_TH;
         DIC = null;
         load_status = "INIT";
-        E("load").value = "Elŝutu datumon.";
+        E("load").value = "Download the dictionary data.";
         E("Reset").disabled = true;
     }
 
     E("load").onclick = function () {
         if (load_status == "PROGRESS") {
-            alert("Elŝutanta ...");
+            alert("Downloading ..."); DIC_JSON_EKMA
             return;
         }
 
-        // alert("내려받기에 시간이 걸릴 수 있으므로, OK/예 버튼을 누른 후, 잠시 기다려 주시기 바랍니다.\r\n내려 받는 동안 인터넷이 연결되어 있어야 합니다.");
         DIC = null;
         delete localStorage.DIC_JSON_TH;
-        E("load").value = "Elŝutanta ...";
+        E("load").value = "Downloading ...";
         load_status = "PROGRESS";
         call_ajax_text_get("./dic.tsv", "time=" + new Date(),
             function (resp) {
@@ -323,7 +319,7 @@ window.onload = function () {
                 localStorage['DIC_JSON_TH'] = compress(resp);
                 DIC = resp.split('\n');
 
-                E("load").value = "Datumo preta.";
+                E("load").value = "Dictionary is ready to use.";
                 load_status = "DONE";
                 E("Reset").disabled = false;
             }

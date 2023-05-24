@@ -1,49 +1,80 @@
+* {
+    font-family: 'Arial', 'Noto Sans CJK KR', 'Malgun Gothic', sans-serif;
+}
+
+h2 {
+    line-height: 0;
+}
+
+#Serchu {
+    width: 58px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    right: 10px;
+    position: absolute;
+    top: 36px;
+}
+
+#load {
+    font-size: 14pt;
+}
+
+#Reset {
+    font-size: 14pt;
+}
+
+.klarigo {
+    font-size: 14pt;
+}
+
 .body {
-    orient: portrait;
+    margin: 10px;
 }
 
 .tdTitle {
-    width: 50px;
+    width: 70px;
+    top: 40px;
+    position: absolute;
+    font-weight: bold;
 }
 
 .tdButton {
     width: 70px;
-    align: right;
 }
 
 .tb {
     width: 100%;
-    virtical-align: middle;
     border-collapse: collapse;
-    font-family: Helvetica;
     text-shadow: #000000 1px 1px 1px;
     font-weight: bold;
     font-size: 20px;
     color: #FFFFFF;
-    background: url(./iui/toolbar.png);
+    /* background: url(./iui/toolbar.png); */
 }
 
 .tbC {
     text-align: center;
     height: 42px;
+    color: #03bf6b;
 }
 
 .frm {
     width: 100%;
     padding: 0px;
-    spacing: 0px;
     background: #FFFFFF;
-    font-family: Helvetica;
+    /* font-family: Helvetica; */
     font-weight: bold;
     font-size: 12pt;
 }
 
-.klarigo {
-    align: center;
-}
-
 .input {
-    width: 100%;
+    width: calc(100% - 166px);
     border: 1px solid #999999;
     font-size: 14pt;
+    border-color: #03bf6b;
+    border-width: 3px;
+    position: absolute;
+    top: 37px;
+    left: 80px;
 }
