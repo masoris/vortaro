@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html manifest="./manifest.appcache">
+
+<head>
+    <title>Esperanto Vortaro (TW)</title>
+    <meta http-equiv="Content-Type" CONTENT="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
+    <script src="index.js"></script>
+    <script src="./pako.min.js"></script>
+    <style src="index.css"></style>
+</head>
+
+<body style="margin:0; padding:0">
+
+    <table class=tb>
+        <tr>
+            <td class=tbC align="center">
+                <h2>Esperanto Vortaro (TW)</h2>
+            </td>
+        </tr>
+    </table>
+
+    <table class=frm>
+        <tr>
+            <td class=tdTitle>
+                <nobr>
+                    <font style="font-size:14pt">Esp-TW:</font>
+                </nobr>
+            </td>
+            <td>
+                <input type=email id=vorto class=input autocomplete=off>
+            </td>
+            <td class=tdButton align=right>
+                <input id="Serchu" type="button" value="Search" style="width:58px;height:30px">
+            </td>
+        </tr>
+    </table>
+
+    <span id="rezulto" class=klarigo style="font-size:14pt">
+        <br>Welcome to Esperanto Dictionary for Taiwanese.<br>
+        <br>
+        This dictionary is available without internet connection.
+        <br>Please download the dictionary contents first.
+        <br>
+        <input type=button id="load" value="Download data at internet connection." style="font-size:14pt">
+        <br>
+        <br>
+        <input type=button id="Reset" style="font-size:14pt;" value="Delete the data.">
+        <br>
+        <br>
+        Original contents were collected and compiled by Abengo.
+        <br>
+
+    </span>
+
+</body>
+
+</html>

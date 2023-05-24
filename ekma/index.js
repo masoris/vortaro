@@ -78,7 +78,7 @@ function klaku_vorto(v) {
     if (v == "") return;
 
     if (DIC == null) {
-        alert("Vi ankoraŭ ne elŝutis datumon.\r\n아직 사전 데이타를 내려 받지 않았습니다. 내려받기를 누르세요.");
+        alert("Vi ankoraŭ ne elŝutis vortaron.\r\n아직 사전 데이타를 내려 받지 않았습니다. 내려받기를 누르세요.");
         return;
     }
 
@@ -296,7 +296,7 @@ window.onload = function () {
     }
 
     if (DIC != null) {
-        E("load").value = "Datumo preta. 사전검색 가능함.";
+        E("load").value = "Vortaro Preta. 사전검색 가능함.";
         load_status = "DONE";
     }
 
@@ -304,7 +304,7 @@ window.onload = function () {
         delete localStorage.DIC_JSON_EKMA;
         DIC = null;
         load_status = "INIT";
-        E("load").value = "Elŝutu datumon. 사전 내려받기.";
+        E("load").value = "Elŝutu Vortaron. 사전 내려받기.";
         E("Reset").disabled = true;
     };
 
@@ -328,7 +328,7 @@ window.onload = function () {
                 localStorage['DIC_JSON_EKMA'] = compressed;
 
                 DIC = resp.split('\n');
-                E("load").value = "Datumo preta. 사전검색 가능함.";
+                E("load").value = "Vortaro Preta. 사전검색 가능함.";
                 load_status = "DONE";
                 E("Reset").disabled = false;
 

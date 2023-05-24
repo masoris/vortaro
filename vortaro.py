@@ -3,6 +3,17 @@ import subprocess, os, sys, shutil
 
 app = Flask(__name__)
 
+# favicon.ico 파일 서비스
+@app.route('/favicon.ico')
+def serve_favicon():
+    return send_from_directory('.', 'favicon.ico')
+
+@app.route('/b/<path:path>')
+def serve_b(path):
+    response = make_response(send_from_directory('./b', path))
+    # response.headers['Cache-Control'] = 'max-age=3600'
+    return response
+
 @app.route('/ex/<path:path>')
 def serve_ex(path):
     response = make_response(send_from_directory('./ex', path))
@@ -15,9 +26,9 @@ def serve_th(path):
     # response.headers['Cache-Control'] = 'max-age=3600'
     return response
 
-@app.route('/ch/<path:path>')
-def serve_ch(path):
-    response = make_response(send_from_directory('./ch', path))
+@app.route('/tw/<path:path>')
+def serve_tw(path):
+    response = make_response(send_from_directory('./tw', path))
     # response.headers['Cache-Control'] = 'max-age=3600'
     return response
 
