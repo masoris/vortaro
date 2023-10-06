@@ -7,7 +7,7 @@ h2 {
 }
 
 #Serchu {
-    width: 79px;
+    width: 95px;
     height: 30px;
     font-size: 14pt;
     /* font-weight: bold; */
@@ -41,6 +41,7 @@ h2 {
 
 .tdButton {
     width: 70px;
+    border-radius: 0%;
 }
 
 .tb {
@@ -69,7 +70,7 @@ h2 {
 }
 
 .input {
-    width: calc(100% - 115px);
+    width: calc(100% - 130px);
     border: 1px solid #999999;
     font-size: 14pt;
     border-color: #03bf6b;

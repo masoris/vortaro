@@ -69,34 +69,53 @@ def serve_ekma(path):
 def serve_favicon():
     return send_from_directory('.', 'favicon.ico')
 
-@app.route('/b/<path:path>')
-def serve_b(path):
-    response = make_response(send_from_directory('./b', path))
-    # response.headers['Cache-Control'] = 'max-age=3600'
-    return response
+# @app.route('/b/<path:path>')
+# def serve_b(path):
+#     response = make_response(send_from_directory('./b', path))
+#     # response.headers['Cache-Control'] = 'max-age=3600'
+#     return response
 
-@app.route('/ex/<path:path>')
-def serve_ex(path):
-    response = make_response(send_from_directory('./ex', path))
-    # response.headers['Cache-Control'] = 'max-age=3600'
-    return response
+# @app.route('/ex/<path:path>')
+# def serve_ex(path):
+#     response = make_response(send_from_directory('./ex', path))
+#     # response.headers['Cache-Control'] = 'max-age=3600'
+#     return response
 
-@app.route('/th/<path:path>')
-def serve_th(path):
-    response = make_response(send_from_directory('./th', path))
-    # response.headers['Cache-Control'] = 'max-age=3600'
-    return response
+# @app.route('/th/<path:path>')
+# def serve_th(path):
+#     response = make_response(send_from_directory('./th', path))
+#     # response.headers['Cache-Control'] = 'max-age=3600'
+#     return response
 
-@app.route('/tw/<path:path>')
-def serve_tw(path):
-    response = make_response(send_from_directory('./tw', path))
-    # response.headers['Cache-Control'] = 'max-age=3600'
-    return response
+# @app.route('/tw/<path:path>')
+# def serve_tw(path):
+#     response = make_response(send_from_directory('./tw', path))
+#     # response.headers['Cache-Control'] = 'max-age=3600'
+#     return response
 
-@app.route('/ekma/<path:path>')
-def serve_ekma(path):
-    response = make_response(send_from_directory('./ekma', path))
-    # response.headers['Cache-Control'] = 'max-age=3600'
-    return response
+# @app.route('/ekma/<path:path>')
+# def serve_ekma(path):
+#     response = make_response(send_from_directory('./ekma', path))
+#     # response.headers['Cache-Control'] = 'max-age=3600'
+#     return response
 
-app.run(debug=True, host='192.168.117.129', port=5005)
+def read_conf():
+    svc = {}
+    fp = open("svc.conf", "r")
+    for line in fp:
+        if line[0] == "#":
+            continue
+        row = line.strip().split("=")
+        if len(row) != 2:
+            continue
+        svc[row[0].strip()] = row[1].strip()
+    fp.close()
+    return svc
+
+svc_conf = read_conf()
+
+app.run(debug=True, host=svc_conf["IP"], port=int(svc_conf["PORT"]))
+#IP=192.168.117.129
+#PORT=5002
+
+# app.run(debug=True, host='192.168.117.129', port=5005)
