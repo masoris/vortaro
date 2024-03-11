@@ -16,6 +16,16 @@ h2 {
     top: 36px;
 }
 
+#Search {
+    width: 95px;
+    height: 30px;
+    font-size: 14pt;
+    /* font-weight: bold; */
+    right: 10px;
+    position: absolute;
+    top: 76px;
+}
+
 #load {
     font-size: 14pt;
 }
@@ -26,6 +36,8 @@ h2 {
 
 .klarigo {
     font-size: 14pt;
+    position: relative;
+    top: 25px;
 }
 
 .body {
@@ -39,9 +51,34 @@ h2 {
     font-weight: bold;
 }
 
+.label1 {
+    left: 10px;
+    top: 37px;
+    position: absolute;
+    font-size: 14pt;
+}
+
+.label2 {
+    left: 10px;
+    top: 76px;
+    position: absolute;
+    font-size: 14pt;
+}
+
 .tdButton {
     width: 70px;
     border-radius: 0%;
+    position: absolute;
+    top: 37px;
+    right: 2%;
+}
+
+.tdButton2 {
+    width: 70px;
+    border-radius: 0%;
+    position: absolute;
+    top: 67px;
+    right: 2%;
 }
 
 .tb {
@@ -70,12 +107,23 @@ h2 {
 }
 
 .input {
-    width: calc(100% - 130px);
+    width: calc(100% - 130px - 70px);
     border: 1px solid #999999;
     font-size: 14pt;
     border-color: #03bf6b;
     border-width: 3px;
     position: absolute;
     top: 37px;
-    /* left: 80px; */
+    left: 70px;
+}
+
+.input2 {
+    width: calc(100% - 130px - 70px);
+    border: 1px solid #999999;
+    font-size: 14pt;
+    border-color: #03bf6b;
+    border-width: 3px;
+    position: absolute;
+    top: 76px;
+    left: 70px;
 }

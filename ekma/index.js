@@ -72,6 +72,7 @@ function cxapelo(v) {
 }
 
 var DIC = null;
+var DIC_ENG_ESP = null;
 var first = 1;
 
 function klaku_vorto(v) {
@@ -88,6 +89,38 @@ function klaku_vorto(v) {
     if (result_lines.length == 0) {
         v = v.toLowerCase();
         result_lines = search(DIC, v);
+        if (result_lines.length == 0) {
+            E("rezulto").innerHTML = "<br><br>Nenio troviĝas por tio.<br>단어를 찾을 수 없습니다.";
+            return;
+        }
+    }
+
+    var result = highlight(result_lines, v);
+
+    var str = "";
+    for (var i = 0; i < result.length; i++) {
+        str += result[i] + "\n";
+    }
+
+    E("rezulto").innerHTML = str;
+
+    first = 1;
+}
+
+function click_word(v) {
+    if (v == "") return;
+
+    if (DIC_ENG_ESP == null) {
+        alert("Vi ankoraŭ ne elŝutis vortaron.\r\n아직 사전 데이타를 내려 받지 않았습니다. 내려받기를 누르세요.");
+        return;
+    }
+
+    E("rezulto").innerHTML = "<br>Searching...";
+
+    var result_lines = search(DIC_ENG_ESP, v);
+    if (result_lines.length == 0) {
+        v = v.toLowerCase();
+        result_lines = search(DIC_ENG_ESP, v);
         if (result_lines.length == 0) {
             E("rezulto").innerHTML = "<br><br>Nenio troviĝas por tio.<br>단어를 찾을 수 없습니다.";
             return;
@@ -278,7 +311,14 @@ window.onload = function () {
         }
     }
 
-    E("vorto").onclick = function () {
+    E("word").onkeyup = function (e) {
+        // chapeligo();
+        if (e.key == "Enter") {
+            click_word(E("word").value);
+        }
+    }
+
+    E("vorto").onclick = function () { // 왜 입력창에서 마우스 클릭을 처리하는지 이해 못함. 
         if (first) {
             E("vorto").select();
             first = 0;
@@ -291,8 +331,17 @@ window.onload = function () {
         first = 1;
     }
 
+    E("Search").onclick = function () {
+        // chapeligo();
+        click_word(E("word").value);
+        first = 1;
+    }
+
     if (localStorage['DIC_JSON_EKMA'] != null) {
         DIC = uncompress(localStorage.DIC_JSON_EKMA).split('\n');
+    }
+    if (localStorage['DIC_JSON_ENG_ESP'] != null) {
+        DIC_ENG_ESP = uncompress(localStorage.DIC_JSON_ENG_ESP).split('\n');
     }
 
     if (DIC != null) {
@@ -303,6 +352,8 @@ window.onload = function () {
     E("Reset").onclick = function () {
         delete localStorage.DIC_JSON_EKMA;
         DIC = null;
+        delete localStorage.DIC_JSON_ENG_ESP;
+        DIC_ENG_ESP = null;
         load_status = "INIT";
         E("load").value = "Elŝutu Vortaron. 사전 내려받기.";
         E("Reset").disabled = true;
@@ -326,8 +377,21 @@ window.onload = function () {
                 // alert(compressed.length);
                 // alert(resp.length);
                 localStorage['DIC_JSON_EKMA'] = compressed;
-
                 DIC = resp.split('\n');
+                call_ajax_text_get("./eng-esp.tsv", "time=" + new Date(),
+                    function (resp) {
+                        // localStorage.clear();
+                        compressed = compress(resp);
+                        // alert(compressed.length);
+                        // alert(resp.length);
+                        localStorage['DIC_JSON_ENG_ESP'] = compressed;
+
+                        DIC_ENG_ESP = resp.split('\n');
+                        E("load").value = "Vortaro Preta. 사전검색 가능함.";
+                        load_status = "DONE";
+                        E("Reset").disabled = false;
+                    }
+                );
                 E("load").value = "Vortaro Preta. 사전검색 가능함.";
                 load_status = "DONE";
                 E("Reset").disabled = false;

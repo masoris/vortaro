@@ -9,10 +9,10 @@ def serve_index():
 
 @app.route('/')
 def serve_root():
-    return redirect('/ekma/index.html')
- #   response = make_response(send_from_directory('./ex', 'index.html'))
+    # return redirect('/ekma/index.html')
+    response = make_response(send_from_directory('./', 'index.html'))
     # response.headers['Cache-Control'] = 'max-age=3600'
-  #  return response
+    return response
 
 @app.route('/ex', defaults={'path': 'index.html'})
 @app.route('/ex/', defaults={'path': 'index.html'})
