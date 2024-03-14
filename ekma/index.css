@@ -37,7 +37,7 @@ h2 {
 .klarigo {
     font-size: 14pt;
     position: relative;
-    top: 25px;
+    top: 35px;
 }
 
 .body {
@@ -53,14 +53,14 @@ h2 {
 
 .label1 {
     left: 10px;
-    top: 37px;
+    top: 38px;
     position: absolute;
     font-size: 14pt;
 }
 
 .label2 {
     left: 10px;
-    top: 76px;
+    top: 78px;
     position: absolute;
     font-size: 14pt;
 }

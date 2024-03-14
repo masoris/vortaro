@@ -2,11 +2,10 @@ from flask import Flask, send_from_directory, request, make_response, jsonify, u
 import subprocess, os, sys, shutil
 
 app = Flask(__name__)
-#app.config['SERVER_NAME'] = 'vortaro.esperanto.or.kr:5005'
 
-#@app.route('/index.html')
-#def serve_index():
-#    return redirect('/ekma')
+@app.route('/index.html')
+def serve_index():
+    return redirect('/ekma/index.html')
 
 @app.route('/')
 def serve_root():
