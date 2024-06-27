@@ -188,7 +188,6 @@ function is_separator(c) {
 
     return 0;
 }
-
 function score(word, entry) {
     var score = 0;
 
@@ -199,7 +198,12 @@ function score(word, entry) {
 
     var idx = entry.indexOf(word);
     if (idx == 0) {
-        score += 30;
+        score += 150;
+    }
+
+    next_char = entry.substring(word.length, word.length + 1)
+    if ("- \t?!.,[]()/12345".indexOf(next_char) >= 0) { //정확히 한글자가 매칭될때만 허용 
+        score += 150;
     }
 
     if (idx > 0 && is_separator(entry.charAt(idx - 1))) {
@@ -226,37 +230,39 @@ function score(word, entry) {
 
 function search(dic, word) {
     var result = new Array();
-    var found = new Object;
-
-    if (word.length < 2) {
-        return result;
-    }
+    var found = new Array();
 
     for (var i = 0; i < dic.length; i++) {
-        if (word.length == 1) {
+        if (word.length == 0) { //한글자 단어 이면, 맨 처음에 매칭 되는 것만 허용
             if (dic[i].indexOf(word) == 0) {
-                result[result.length] = score(word, dic[i]);
-                found[i] = 1;
+                next_char = dic[i].substring(word.length, word.length + 1)
+                if ("- \t?!.,[]()/12345".indexOf(next_char) >= 0) { //정확히 한글자가 매칭될때만 허용 
+                    result[result.length] = score(word, dic[i]);
+                    found[found.length] = i;
+                }
             }
-        } else {
+        } else { // 두 글자 이상일 때
             if (dic[i].indexOf(word) >= 0) {
                 result[result.length] = score(word, dic[i]);
-                found[i] = 1;
+                found[found.length] = i;
             }
         }
     }
+    console.log("a");
 
     var suffix = word.substring(word.length - 1, word.length);
     if (word.length > 2 && "aeiou-/".indexOf(suffix) >= 0) {
         var word2 = word.substring(0, word.length - 1);
         for (var i = 0; i < dic.length; i++) {
             if (!(i in found)) {
+
                 if (dic[i].indexOf(word2) >= 0) {
                     result[result.length] = score(word, dic[i]);
                 }
             }
         }
     }
+    console.log("b");
 
     result.sort();
     result.reverse();
@@ -264,7 +270,16 @@ function search(dic, word) {
     for (var i = 0; i < result.length; i++) {
         result[i] = result[i].substring(7);
     }
-
+    console.log("c");
+    console.log(result.length);
+    if (result.length > 100) {
+        var new_result = new Array();
+        for (i = 0; i < 100; i++) {
+            new_result[i] = result[i];
+        }
+        result = new_result;
+    }
+    console.log(result.length);
     return result;
 }
 
