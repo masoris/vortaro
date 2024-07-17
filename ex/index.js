@@ -280,10 +280,45 @@ function search(dic, word) {
         result = new_result;
     }
     console.log(result.length);
+    result = [...new Set(result)];
     return result;
 }
 
 var load_status = "INIT";
+
+function postAjax(url, input, successCallback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            successCallback(JSON.parse(xhr.responseText), xhr.responseText);
+        } else {
+            alert(xhr.responseText);
+        }
+    };
+    xhr.onerror = function () {
+        alert(xhr.responseText);
+    };
+    xhr.send(JSON.stringify(input));
+}
+
+function $(id) {
+    return document.getElementById(id);
+}
+
+function send_report() {
+    var input = { who: $('who').value, text: $('text').value };
+    postAjax("/api/sendmail.api", input, function (obj, text) {
+        console.log(text);
+        if (obj.ok == 'no') {
+            alert(obj.msg);
+            return;
+        }
+        alert("수정요청이 전송되었습니다.");
+    });
+}
+
 
 window.onload = function () {
     E("vorto").onkeyup = function (e) {
@@ -299,6 +334,12 @@ window.onload = function () {
             first = 0;
         }
     }
+
+    $("Report").onclick = function () {
+        $("correct").style.display = "block";
+    }
+
+    $("Send").onclick = send_report;
 
     E("Serchu").onclick = function () {
         chapeligo();

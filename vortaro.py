@@ -70,35 +70,22 @@ def serve_ekma(path):
 def serve_favicon():
     return send_from_directory('.', 'favicon.ico')
 
-# @app.route('/b/<path:path>')
-# def serve_b(path):
-#     response = make_response(send_from_directory('./b', path))
-#     # response.headers['Cache-Control'] = 'max-age=3600'
-#     return response
+@app.route('/api/sendmail.api', methods=['POST'])
+def sendmail():
+    who = request.json['who']
+    text = request.json['text']
 
-# @app.route('/ex/<path:path>')
-# def serve_ex(path):
-#     response = make_response(send_from_directory('./ex', path))
-#     # response.headers['Cache-Control'] = 'max-age=3600'
-#     return response
+    fp = open("./sendmail.txt", "w")
+    fp.write("SUBJECT: 사전 수정요청, " + who)       
+    fp.write("\n" + text +"\n")
+    fp.close()
 
-# @app.route('/th/<path:path>')
-# def serve_th(path):
-#     response = make_response(send_from_directory('./th', path))
-#     # response.headers['Cache-Control'] = 'max-age=3600'
-#     return response
+    cmd = ["python3", "sendmail.py", "memlingo.service@gmail.com", "sendmail.txt", "sendmail.html"]
+    output = subprocess.run(cmd, stdout=subprocess.PIPE)
 
-# @app.route('/tw/<path:path>')
-# def serve_tw(path):
-#     response = make_response(send_from_directory('./tw', path))
-#     # response.headers['Cache-Control'] = 'max-age=3600'
-#     return response
-
-# @app.route('/ekma/<path:path>')
-# def serve_ekma(path):
-#     response = make_response(send_from_directory('./ekma', path))
-#     # response.headers['Cache-Control'] = 'max-age=3600'
-#     return response
+    result = {'ok': 'yes', "msg": "발송되었습니다."}
+    resp = make_response(jsonify(result))
+    return resp
 
 def read_conf():
     svc = {}

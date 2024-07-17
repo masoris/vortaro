@@ -270,7 +270,7 @@ function search(dic, word) {
         if (word.length == 0) { //한글자 단어 이면, 맨 처음에 매칭 되는 것만 허용
             if (dic[i].indexOf(word) == 0) {
                 next_char = dic[i].substring(word.length, word.length + 1)
-                if ("- \t?!.,[]()/12345".indexOf(next_char) >= 0) { //정확히 한글자가 매칭될때만 허용 
+                if ("- \t?!.,[]()/123456789".indexOf(next_char) >= 0) { //정확히 한글자가 매칭될때만 허용 
                     result[result.length] = score(word, dic[i]);
                     found[found.length] = i;
                 }
@@ -313,11 +313,46 @@ function search(dic, word) {
         }
         result = new_result;
     }
+    result = [...new Set(result)];
     console.log(result.length);
     return result;
 }
 
 var load_status = "INIT";
+
+function postAjax(url, input, successCallback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            successCallback(JSON.parse(xhr.responseText), xhr.responseText);
+        } else {
+            alert(xhr.responseText);
+        }
+    };
+    xhr.onerror = function () {
+        alert(xhr.responseText);
+    };
+    xhr.send(JSON.stringify(input));
+}
+
+function $(id) {
+    return document.getElementById(id);
+}
+
+function send_report() {
+    var input = { who: $('who').value, text: $('text').value };
+    postAjax("/api/sendmail.api", input, function (obj, text) {
+        console.log(text);
+        if (obj.ok == 'no') {
+            alert(obj.msg);
+            return;
+        }
+        alert("수정요청이 전송되었습니다.");
+    });
+}
+
 
 window.onload = function () {
     E("vorto").onkeyup = function (e) {
@@ -364,6 +399,12 @@ window.onload = function () {
         E("load").value = "Vortaro Preta. 사전검색 가능함.";
         load_status = "DONE";
     }
+
+    $("Report").onclick = function () {
+        $("correct").style.display = "block";
+    }
+
+    $("Send").onclick = send_report;
 
     E("Reset").onclick = function () {
         delete localStorage.DIC_JSON_EKMA;
@@ -416,3 +457,5 @@ window.onload = function () {
         );
     };
 };
+
+

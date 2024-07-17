@@ -275,6 +275,7 @@ function search(dic, word) {
         result = new_result;
     }
     console.log(result.length);
+    result = [...new Set(result)];
     return result;
 }
 
