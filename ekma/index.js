@@ -172,41 +172,47 @@ function highlight(lines, vorto) {
     for (var i = 0; i < lines.length; i++) {
         var x = new_lines.length;
         new_lines[x] = lines[i];
+        row = new_lines[x].split("\t")
+        if (row[1] != "" && row[1] != "GX") {
+            row[1] = "<b><font color=green size=-1>[" + row[1] + "]</font></b>";
+            new_lines[x] = row[0] + "\t" + row[1] + "\t" + row[2];
+        }
         new_lines[x] = new_lines[x].split(vorto).join("<font color=blue><b>" + vorto + "</b></font>");
         new_lines[x] = "<b>" + new_lines[x].replace("\t", "</b>&nbsp;&nbsp;") + "<hr>";
-        if (new_lines[x].indexOf("<G_1>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<G_1>", "<B><font color=green size=-1>[G1]</font></B>");
-        }
-        if (new_lines[x].indexOf("<G_2>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<G_2>", "<B><font color=green size=-1>[G2]</font></B>");
-        }
-        if (new_lines[x].indexOf("<G_3>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<G_3>", "<B><font color=green size=-1>[G3]</font></B>");
-        }
-        if (new_lines[x].indexOf("<G_4>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<G_4>", "<B><font color=green size=-1>[G4]</font></B>");
-        }
-        if (new_lines[x].indexOf("<G_5>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<G_5>", "<B><font color=green size=-1>[G5]</font></B>");
-        }
-        if (new_lines[x].indexOf("<G_6>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<G_6>", "<B><font color=green size=-1>[G6]</font></B>");
-        }
-        if (new_lines[x].indexOf("<G_7>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<G_7>", "<B><font color=green size=-1>[G7]</font></B>");
-        }
-        if (new_lines[x].indexOf("<G_8>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<G_8>", "<B><font color=green size=-1>[G8]</font></B>");
-        }
-        if (new_lines[x].indexOf("<G_9>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<G_9>", "<B><font color=green size=-1>[G9]</font></B>");
-        }
-        if (new_lines[x].indexOf("<O_A>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<O_A>", "<B><font color=green size=-1>[OA]</font></B>");
-        }
-        if (new_lines[x].indexOf("<G_Y>") >= 0) {
-            new_lines[x] = new_lines[x].replace("<G_Y>", "");
-        }
+
+        // if (new_lines[x].indexOf("<G_1>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<G_1>", "<B><font color=green size=-1>[G1]</font></B>");
+        // }
+        // if (new_lines[x].indexOf("<G_2>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<G_2>", "<B><font color=green size=-1>[G2]</font></B>");
+        // }
+        // if (new_lines[x].indexOf("<G_3>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<G_3>", "<B><font color=green size=-1>[G3]</font></B>");
+        // }
+        // if (new_lines[x].indexOf("<G_4>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<G_4>", "<B><font color=green size=-1>[G4]</font></B>");
+        // }
+        // if (new_lines[x].indexOf("<G_5>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<G_5>", "<B><font color=green size=-1>[G5]</font></B>");
+        // }
+        // if (new_lines[x].indexOf("<G_6>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<G_6>", "<B><font color=green size=-1>[G6]</font></B>");
+        // }
+        // if (new_lines[x].indexOf("<G_7>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<G_7>", "<B><font color=green size=-1>[G7]</font></B>");
+        // }
+        // if (new_lines[x].indexOf("<G_8>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<G_8>", "<B><font color=green size=-1>[G8]</font></B>");
+        // }
+        // if (new_lines[x].indexOf("<G_9>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<G_9>", "<B><font color=green size=-1>[G9]</font></B>");
+        // }
+        // if (new_lines[x].indexOf("<O_A>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<O_A>", "<B><font color=green size=-1>[OA]</font></B>");
+        // }
+        // if (new_lines[x].indexOf("<G_Y>") >= 0) {
+        //     new_lines[x] = new_lines[x].replace("<G_Y>", "");
+        // }
     }
 
     return new_lines;

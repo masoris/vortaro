@@ -1,5 +1,5 @@
 from flask import Flask, send_from_directory, request, make_response, jsonify, url_for, redirect
-import subprocess, os, sys, shutil
+import subprocess, os, sys, shutil, time
 
 app = Flask(__name__)
 #app.config['SERVER_NAME'] = 'vortaro.esperanto.or.kr:5005'
@@ -78,6 +78,13 @@ def sendmail():
     fp = open("./sendmail.txt", "w")
     fp.write("SUBJECT: 사전 수정요청, " + who)       
     fp.write("\n" + text +"\n")
+    fp.close()
+
+    fp = open("./ekma/correction.txt", "a+")
+    fp.write("\n요청 시간: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
+    fp.write("\n처리결과: ")
+    fp.write("\n작성자: " + who)       
+    fp.write("\n수정 요청 내용: \n" + text +"\n") 
     fp.close()
 
     cmd = ["python3", "sendmail.py", "memlingo.service@gmail.com", "sendmail.txt", "sendmail.html"]
