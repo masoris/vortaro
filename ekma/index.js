@@ -177,6 +177,9 @@ function highlight(lines, vorto) {
             row[1] = "<b><font color=green size=-1>[" + row[1] + "]</font></b>";
             new_lines[x] = row[0] + "\t" + row[1] + "\t" + row[2];
         }
+        if (row[1] == "GX") {
+            new_lines[x] = row[0] + "\t" + row[2];
+        }
         new_lines[x] = new_lines[x].split(vorto).join("<font color=blue><b>" + vorto + "</b></font>");
         new_lines[x] = "<b>" + new_lines[x].replace("\t", "</b>&nbsp;&nbsp;") + "<hr>";
 
@@ -279,30 +282,46 @@ function search(dic, word) {
                 if ("- \t?!.,[]()/123456789".indexOf(next_char) >= 0) { //정확히 한글자가 매칭될때만 허용 
                     result[result.length] = score(word, dic[i]);
                     found[found.length] = i;
+                    // console.log(i + " " + dic[i]);
                 }
             }
         } else { // 두 글자 이상일 때
             if (dic[i].indexOf(word) >= 0) {
                 result[result.length] = score(word, dic[i]);
                 found[found.length] = i;
+                // console.log(i + " " + dic[i]);
             }
         }
     }
-    console.log("a");
+    // console.log("a");
+    // console.log(found.length);
 
     var suffix = word.substring(word.length - 1, word.length);
     if (word.length > 2 && "aeiou-/".indexOf(suffix) >= 0) {
         var word2 = word.substring(0, word.length - 1);
+        // console.log(word2);
         for (var i = 0; i < dic.length; i++) {
-            if (!(i in found)) {
-
+            var found_yes = false;
+            for (var j = 0; j < found.length; j++) {
+                if (found[j] == i) {
+                    found_yes = true;
+                    break
+                }
+            }
+            if (!found_yes) {
                 if (dic[i].indexOf(word2) >= 0) {
+                    // console.log(dic[i]);
+                    // console.log(i);
                     result[result.length] = score(word, dic[i]);
                 }
             }
+            else {
+                // console.log(dic[i]);
+                // console.log(i);
+            }
         }
     }
-    console.log("b");
+    // console.log("b");
 
     result.sort();
     result.reverse();
@@ -310,8 +329,8 @@ function search(dic, word) {
     for (var i = 0; i < result.length; i++) {
         result[i] = result[i].substring(7);
     }
-    console.log("c");
-    console.log(result.length);
+    // console.log("c");
+    // console.log(result.length);
     if (result.length > 100) {
         var new_result = new Array();
         for (i = 0; i < 100; i++) {
@@ -319,8 +338,8 @@ function search(dic, word) {
         }
         result = new_result;
     }
-    result = [...new Set(result)];
-    console.log(result.length);
+    result = [...new Set(result)]; // 중복제거
+    // console.log(result.length);
     return result;
 }
 
