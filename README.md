@@ -25,4 +25,4 @@ Flask로 만든 에스페란토 사전 입니다.
 http://vortaro.esperanto.or.kr
 
 ## 저작권 License
-CC BY-SA 4.0 이용할 수 있습니다.  
+이 사전의 저작권은 한국에스페란토협회에 있으며 CC-BY-SA 4.0을 따릅니다.
