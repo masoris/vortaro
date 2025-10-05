@@ -19,7 +19,7 @@ Flask로 만든 에스페란토 사전 입니다.
 * ./b/index.html 시각장애인을 위한 사전
 
 ## 사전 사용방법
-사전 사용전 반드시 "Elŝutu Vortaron. 사전 내려받기." 버튼을 눌러주세요.
+사전 사용전 반드시 **Elŝutu Vortaron. 사전 내려받기.** 버튼을 눌러주세요.
 
 ## 적용된 사이트
 http://vortaro.esperanto.or.kr
